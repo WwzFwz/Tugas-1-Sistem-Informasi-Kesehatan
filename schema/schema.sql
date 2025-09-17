@@ -1,0 +1,36 @@
+CREATE TABLE who_health_indicators (
+    id BIGINT PRIMARY KEY,
+    indicator_code VARCHAR(50) NOT NULL,
+    spatial_dim_type VARCHAR(20),
+    spatial_dim VARCHAR(10),
+    time_dim_type VARCHAR(10),
+    parent_location_code VARCHAR(10),
+    parent_location VARCHAR(100),
+    dim1_type VARCHAR(20),
+    dim1 VARCHAR(20),
+    time_dim INT,
+    dim2_type VARCHAR(20),
+    dim2 VARCHAR(20),
+    dim3_type VARCHAR(20),
+    dim3 VARCHAR(20),
+    data_source_dim_type VARCHAR(50),
+    data_source_dim VARCHAR(100),
+    value_text VARCHAR(50),
+    numeric_value DECIMAL(10,4),
+    low_value DECIMAL(10,4),
+    high_value DECIMAL(10,4),
+    comments TEXT,
+    date_recorded TIMESTAMP,
+    time_dimension_value INT,
+    time_dimension_begin DATE,
+    time_dimension_end DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+
+    INDEX idx_indicator_code (indicator_code),
+    INDEX idx_spatial_dim (spatial_dim),
+    INDEX idx_time_dim (time_dim),
+    INDEX idx_composite (indicator_code, spatial_dim, time_dim)
+);
+
